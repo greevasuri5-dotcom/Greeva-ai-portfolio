@@ -117,7 +117,7 @@ if sales_file is not None:
                             - upload current_stock.csv to compute Final order qty.
                             - improve accuracy by feeding more recent and seasonal data.
 
-       else:
-          st.info("upload sales.csv to see KPIs, charts, reorder suggestions.")
+        else:
+           st.info("upload sales.csv to see KPIs, charts, reorder suggestions.")
 
                       
