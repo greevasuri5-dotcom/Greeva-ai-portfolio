@@ -101,7 +101,7 @@ if sales_file is not None:
       if stock_file is not None:
         stock_df_raw = pd.read_csv(stock_file)
         stock_df = clean_stock_df(stock_df_raw)
-        if not tock_df.empty:
+        if not stock_df.empty:
           stock_by_item = stock_df.groupby("item name")["quanity in stock"].sum()
           reorder_df ["current stock (sum)"] = reorder_df["item name"].map(stock_by_item).fillna(0).astype(int)
           reorder_df["final order qty"] = (reorder_df ["suggested reorder qty"] - reorder_df["current stock(sum)"]).clip(lower = 0).astype(int)
@@ -111,7 +111,7 @@ if sales_file is not None:
 
         filename = "supplier_order.csv" if stock_file is not None else "reorder_suggestions.csv"
         csv_bytes = reorder_df.to_csv(index = False).encode("utf-8")
-        st.download_button("download csv, data = csv_bytes, file_name = filename, mime = "text/csv")
+        st.download_button("Download CSV", data = csv_bytes, file_name = filename, mime = "text/csv")
         with st.expander("notes", expanded = False):
            st.markdown(f""" - reorder suggestion uses a {lookback_days}-day moving average.
                             - upload current_stock.csv to compute Final order qty.
