@@ -115,7 +115,7 @@ if sales_file is not None:
         with st.expander("notes", expanded = False):
            st.markdown(f""" - reorder suggestion uses a {lookback_days}-day moving average.
                             - upload current_stock.csv to compute Final order qty.
-                            - improve accuracy by feeding more recent and seasonal data.
+                            - improve accuracy by feeding more recent and seasonal data.)
 
         else:
            st.info("upload sales.csv to see KPIs, charts, reorder suggestions.")
